@@ -17,9 +17,10 @@ while 1:
     try:
             #Aguarda receber dados do socket
             message, clientAddress = serverSocket.recvfrom(2048)
+            data = message[1:]
             ack = str(next(iterator))
             print(clientAddress)
-            print(message)
+            print(data)
             arquivoServer = open("arquivoServer.txt", "ab")
             arquivoServer.write(message)
             arquivoServer.close()
