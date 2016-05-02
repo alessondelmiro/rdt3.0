@@ -12,7 +12,7 @@ s.connect((HOST, PORT))
 iterator = cycle(range(2))
 
 arquivo = open('arquivo.txt', 'rb')
-arquivo2 = open('arquivo.txt', 'rb')
+arquivo2 = open('arquivo.txt', 'r')
 
 #Le o arquivo a cada 1000 bytes e para quando o arquivo termina.
 while arquivo2.read(10) != "":
