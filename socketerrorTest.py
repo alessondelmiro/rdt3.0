@@ -10,7 +10,7 @@ s.connect((HOST, PORT))
 arquivo = open('teste.txt', 'r')
 arquivo2 = open('teste.txt', 'r')
 
-#Lê o arquivo a cada 1000 bytes e pára quando o arquivo termina.
+#Le o arquivo a cada 1000 bytes e para quando o arquivo termina.
 while arquivo2.read(1000) != "":
 	pacote = arquivo.read(1000)
 	s.sendWithError(pacote)
