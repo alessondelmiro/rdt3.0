@@ -7,6 +7,7 @@ serverPort = 12000
 serverSocket = socket(AF_INET, SOCK_DGRAM)
 #Associa o Socket criado com a porta desejada
 serverSocket.bind(('localhost', serverPort))
+#Cria um iterador que alterna entre 1 e 0
 iterator = cycle(range(2))
 
 print("Servidor pronto para receber mensagens. Digite Ctrl+C para terminar.")
