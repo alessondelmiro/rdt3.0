@@ -17,12 +17,17 @@ while 1:
     try:
             #Aguarda receber dados do socket
             message, clientAddress = serverSocket.recvfrom(2048)
-            ack = str(next(iterator))
+            data = message[1:]
+            
             print(clientAddress)
+            print(message[0:1])
             print(message)
+            
             arquivoServer = open("arquivoServer.txt", "ab")
-            arquivoServer.write(message)
+            arquivoServer.write(data)
             arquivoServer.close()
+
+            ack = str(next(iterator))
             modifiedMessage = "ACK " + ack
             serverSocket.sendto(modifiedMessage.encode(), clientAddress)
     except (KeyboardInterrupt, SystemExit):
