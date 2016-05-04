@@ -1,2 +1,2 @@
-# Reliable Data Tranfer 3.0
+# Reliable Data Transfer 3.0
 Readme
