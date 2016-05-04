@@ -10,23 +10,29 @@ s.settimeout(2.0)
 s.connect((HOST, PORT))
 
 iterator = cycle(range(2))
+iterator2 = cycle(range(2))
+ack = ''
 
 arquivo = open('arquivo.txt', 'r')
 arquivo2 = open('arquivo.txt', 'r')
 
 #Le o arquivo a cada 1000 bytes e para quando o arquivo termina.
-while arquivo2.read(1000) != "":
-	texto = arquivo.read(1000)
+while arquivo2.read(2) != "":
+	texto = arquivo.read(2)
 	indice = str(next(iterator))
 	pacote = indice + texto
 	s.sendWithError(pacote)
 
-	try:
-                data = s.recvWithError(1024)
-                print(data)
-
-        except socket.timeout:
-                print("Timeout")
+	while 1:
+		try:
+			ack = s.recvWithError(1024)
+			if ack == indice:
+				print (ack)
+				break
+		except socket.timeout:
+			print ("Timeout, reenviando arquivo " + indice)
+			s.sendWithError(pacote)
+	
 
 arquivo.close()
 s.close()
